@@ -1,39 +1,26 @@
-import { MainContainer } from "components/Header/MyContainer";
+import { useMedia } from "react-use";
+import { MainContainer } from "components/MyContainer";
 
-import {
-  HeaderStyle,
-  WrapperContent,
-  Wrapper,
-  Logo,
-  InputSearch,
-  InputSearchMob,
-  SelectWrapper,
-  Select,
-} from "./Header.styled";
+import { SearchInput } from "components/SearchInput";
+import { Logo } from "components/Logo";
+import { LangSwitcher } from "components/LangSwitcher";
+
+import { HeaderStyle, Wrapper } from "./Header.styled";
 
 export const Header = () => {
+  const isMobileDevice = useMedia("(max-width: 764px)");
+
+  console.log(isMobileDevice);
   return (
     <HeaderStyle>
       <MainContainer>
         <Wrapper>
           <Logo to="/">Event Planner</Logo>
-          <InputSearch
-            type="text"
-            placeholder="Search by keywords"
-            name="search"
-          />
-          <SelectWrapper>
-            <Select name="switcher" defaultValue="UK">
-              <option value="UK">UK</option>
-              <option value="UA">UA</option>
-            </Select>
-          </SelectWrapper>
+          {!isMobileDevice && <SearchInput />}
+          <LangSwitcher />
         </Wrapper>
-        <InputSearchMob
-          type="text"
-          placeholder="Search by keywords"
-          name="search"
-        />
+
+        {isMobileDevice && <SearchInput />}
       </MainContainer>
     </HeaderStyle>
   );
