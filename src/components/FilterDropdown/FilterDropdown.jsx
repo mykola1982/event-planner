@@ -21,7 +21,7 @@ import { filters } from "data/filters";
 export const FilterDropdown = ({ selected, setSelected }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const isMobileDevice = useMedia("(max-width: 764px)");
+  const isMobileDevice = useMedia("(max-width: 768px)");
 
   const handleDocumentClick = useCallback((event) => {
     if (!event.target.closest(`#sort`)) {

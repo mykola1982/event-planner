@@ -8,7 +8,7 @@ import { LangSwitcher } from "components/LangSwitcher";
 import { HeaderStyle, Wrapper } from "./Header.styled";
 
 export const Header = () => {
-  const isMobileDevice = useMedia("(max-width: 764px)");
+  const isMobileDevice = useMedia("(max-width: 767px)");
 
   return (
     <HeaderStyle>
