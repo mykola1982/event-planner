@@ -1,7 +1,12 @@
+import { Link, useLocation } from "react-router-dom";
+
 const AddEventPage = () => {
+  const location = useLocation();
+
+  const backLinkHref = location.state?.from ?? "/";
   return (
     <>
-      <button type="button">назад</button>
+      <Link to={backLinkHref}>назад</Link>
       <p>створити подію</p>
     </>
   );

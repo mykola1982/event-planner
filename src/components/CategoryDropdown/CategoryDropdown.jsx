@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useMedia } from "react-use";
 import { nanoid } from "nanoid";
 import {
   DropdownStyled,
@@ -16,6 +17,8 @@ import { categories } from "data/categories";
 export const CategoryDropdown = ({ selected, setSelected }) => {
   const [isActive, setIsActive] = useState(false);
 
+  const isMobileDevice = useMedia("(max-width: 764px)");
+
   const handleDocumentClick = useCallback((event) => {
     if (!event.target.closest(`#category`)) {
       setIsActive(false);
@@ -30,32 +33,58 @@ export const CategoryDropdown = ({ selected, setSelected }) => {
     };
   }, [handleDocumentClick]);
 
+  const handleClick = (category) => {
+    if (selected === category) {
+      setSelected("");
+    } else setSelected(category);
+
+    setIsActive(false);
+  };
+
   return (
-    <DropdownStyled id={"category"}>
+    <DropdownStyled id={"category"} type="button">
       <DropdownBtn
+        type="button"
         onClick={() => {
           setIsActive(!isActive);
           console.log(isActive);
         }}
       >
-        <DropdownBtnTitle>Category</DropdownBtnTitle>
-        <FilterCategoryIcon />
+        {selected ? (
+          <>
+            <DropdownBtnTitle style={{ color: "#7B61FF" }}>
+              {selected}
+            </DropdownBtnTitle>
+            <FilterCategoryIcon style={{ stroke: "#7B61FF" }} />
+          </>
+        ) : (
+          <>
+            <DropdownBtnTitle> Category</DropdownBtnTitle>
+            <FilterCategoryIcon />
+          </>
+        )}
       </DropdownBtn>
       {isActive && (
         <DropdownContent>
-          <DropdownContentHeader onClick={() => setIsActive(!isActive)}>
-            <FilterCategoryIcon />
-            Category
+          <DropdownContentHeader
+            onClick={() => setIsActive(!isActive)}
+            style={isMobileDevice ? { justifyContent: "flex-start" } : {}}
+          >
+            {isMobileDevice && <FilterCategoryIcon />}
+            {selected ? selected : "Category"}
+            {!isMobileDevice && <FilterCategoryIcon />}
           </DropdownContentHeader>
 
           <DropdownList>
             {categories.map((category) => (
               <DropdownItem
                 key={nanoid()}
-                onClick={(e) => {
-                  setSelected(category);
-                  setIsActive(false);
-                }}
+                onClick={() => handleClick(category)}
+                style={
+                  selected === category
+                    ? { color: "#7B61FF", borderColor: "#7B61FF" }
+                    : {}
+                }
               >
                 {category}
               </DropdownItem>

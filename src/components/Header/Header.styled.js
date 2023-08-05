@@ -22,7 +22,6 @@ export const Wrapper = styled.div`
   margin-bottom: 24px;
 
   @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
-    display: block;
     margin-bottom: 0;
   }
 `;

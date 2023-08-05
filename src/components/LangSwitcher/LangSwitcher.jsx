@@ -30,7 +30,7 @@ export const LangSwitcher = () => {
 
   return (
     <DropdownStyled id="langSwitche">
-      <DropdownBtn onClick={() => setIsActive(!isActive)}>
+      <DropdownBtn type="button" onClick={() => setIsActive(!isActive)}>
         {selected}
         <DownIcon />
       </DropdownBtn>

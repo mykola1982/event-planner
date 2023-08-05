@@ -9,11 +9,10 @@ export const DropdownStyled = styled.div`
   user-select: none;
 `;
 
-export const DropdownBtn = styled.div`
+export const DropdownBtn = styled.button`
   width: 100%;
   height: 100%;
   padding: 12px 6px 12px 12px;
-  background: #ffffff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -26,6 +25,9 @@ export const DropdownBtn = styled.div`
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
+
+  border: none;
+  background: ${(p) => p.theme.colors.mainWhite};
 `;
 
 export const DropdownContent = styled.div`
@@ -54,6 +56,8 @@ export const DropdownItem = styled.div`
   padding-bottom: 4px;
   border-bottom: 1px solid #aca7c3;
   cursor: pointer;
+
+  transition: ${(p) => p.theme.transitions.main};
 
   &:hover {
     color: ${(p) => p.theme.colors.primary};

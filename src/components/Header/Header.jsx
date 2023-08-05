@@ -10,7 +10,6 @@ import { HeaderStyle, Wrapper } from "./Header.styled";
 export const Header = () => {
   const isMobileDevice = useMedia("(max-width: 764px)");
 
-  console.log(isMobileDevice);
   return (
     <HeaderStyle>
       <MainContainer>

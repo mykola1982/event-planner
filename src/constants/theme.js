@@ -2,6 +2,7 @@ export const theme = {
   breakpoints: ["375px", "768px", "1440px"],
   colors: {
     primary: "#7B61FF",
+    hoverBtn: " #6243FF",
     bg: "#FEFCFF",
     mainBlack: "#3F3F3F",
     mainWhite: "#FFFFFF",
