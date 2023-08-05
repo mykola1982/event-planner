@@ -1,5 +1,5 @@
 import { useMedia } from "react-use";
-import { MainContainer } from "components/MyContainer";
+import { MainContainer } from "components/MainContainer";
 
 import { SearchInput } from "components/SearchInput";
 import { Logo } from "components/Logo";
