@@ -18,7 +18,6 @@ export const Header = () => {
           {!isMobileDevice && <SearchInput />}
           <LangSwitcher />
         </Wrapper>
-
         {isMobileDevice && <SearchInput />}
       </MainContainer>
     </HeaderStyle>
