@@ -49,7 +49,7 @@ const initialValues = {
   date: new Date().toISOString().split("T")[0],
   time: new Date().toISOString().split("T")[1].slice(0, 5),
   category: categories[0],
-  priority: "High",
+  priority: "Medium",
 };
 
 export const FormAddEvent = () => {
@@ -112,12 +112,7 @@ export const FormAddEvent = () => {
           <Field id={idInputLocationEvent} type="text" name="locationEvent" />
           <ErrorMessage name="locationEvent" component="p" />
           <label htmlFor={idInputCategory}>Category</label>
-          <Field
-            component="select"
-            name="category"
-            id={idInputCategory}
-            value={initialValues.category}
-          >
+          <Field component="select" name="category" id={idInputCategory}>
             {categories.map((category) => (
               <option key={nanoid()} value={category}>
                 {category}
@@ -130,12 +125,7 @@ export const FormAddEvent = () => {
           <ErrorMessage name="img" component="p" />
           <label htmlFor={idInputPriority}>Priority</label>
 
-          <Field
-            component="select"
-            name="priority"
-            id={idInputPriority}
-            value={initialValues.priority}
-          >
+          <Field component="select" name="priority" id={idInputPriority}>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
