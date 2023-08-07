@@ -7,6 +7,7 @@ import {
   WrapperDate,
   WrapperInfo,
   TitleStyled,
+  DescriptionContainer,
   DescriptionStyled,
   LinkStyled,
 } from "./EventsItem.styled";
@@ -57,18 +58,20 @@ export const EventsItem = ({ event, location }) => {
         <PriorityStyled style={colorPriority}>{priority}</PriorityStyled>
       </CategoryAndPriorytyWrapper>
 
-      {/* <WrapperInfo>
+      <WrapperInfo id="wrapperInfo">
         <WrapperDate>
           <p>{formattedDate(date)}</p>
           <p> {locationEvent}</p>
         </WrapperDate>
         <TitleStyled>{name}</TitleStyled>
-        <DescriptionStyled>{description}</DescriptionStyled>
-        
-      </WrapperInfo> */}
-      <LinkStyled to={`/events/${id}`} state={{ from: location }}>
-        More info
-      </LinkStyled>
+        <DescriptionContainer>
+          <DescriptionStyled>{description}</DescriptionStyled>
+        </DescriptionContainer>
+
+        <LinkStyled to={`/events/${id}`} state={{ from: location }}>
+          More info
+        </LinkStyled>
+      </WrapperInfo>
     </Item>
   );
 };
