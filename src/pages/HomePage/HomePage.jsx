@@ -11,13 +11,12 @@ import { AddNewButtonEvent } from "components/AddNewButtonEvent";
 import { MainContainer } from "components/MainContainer";
 import { Section } from "components/Section";
 import { EventsList } from "components/EventsList";
+import { Loader } from "components/Loader";
 
 import { ButtonSection, Title } from "./HomePage.styled";
 
 const HomePage = () => {
   const isTableDevice = useMedia("(min-width: 768px) and (max-width: 1437px)");
-
-  console.log(isTableDevice);
 
   const [events, setEvents] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +43,7 @@ const HomePage = () => {
 
   return (
     <MainContainer>
+      {isLoading && <Loader />}
       <Section>
         <ButtonSection>
           {!isTableDevice && <Title>My events</Title>}

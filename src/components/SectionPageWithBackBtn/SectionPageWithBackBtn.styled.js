@@ -6,6 +6,6 @@ export const SectionStyled = styled.section`
   @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
   }
   @media screen and (min-width: ${(p) => p.theme.breakpoints[2]}) {
-    padding: 60px 0;
+    padding: 16px 0;
   }
 `;

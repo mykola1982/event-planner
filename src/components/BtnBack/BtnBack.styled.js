@@ -8,6 +8,11 @@ export const Button = styled(Link)`
   justify-content: space-between;
   align-items: center;
   width: 67px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[2]}) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const IconButton = styled(BackIcon)`

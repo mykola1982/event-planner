@@ -55,6 +55,7 @@ export const DropdownContent = styled.div`
   box-shadow: 0px 4px 10px 0px #00000040;
   border-radius: 8px;
   border-bottom: 1px solid #aca7c3;
+  z-index: 2;
 
   width: 170px;
   user-select: none;

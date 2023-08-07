@@ -8,7 +8,7 @@ export const fetchAllEventsAPI = async () => {
   return data;
 };
 
-export const fetchEventtAPI = async (id) => {
+export const fetchEventAPI = async (id) => {
   const { data } = await axios.get(`/events/${id}`);
   return data;
 };
