@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import * as eventsAPI from "../../services/events-API";
@@ -14,6 +14,7 @@ import { Title } from "./EventDetailsPage.styled";
 
 const EventDetailsPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { eventId } = useParams();
 
   const [detailsEvent, setDetailsEvent] = useState(null);
@@ -40,6 +41,7 @@ const EventDetailsPage = () => {
       setIsLoading(true);
       await eventsAPI.removeEventAPI(id);
       setDetailsEvent(null);
+      navigate("/");
       toast.success(`The event was successfully deleted`);
     } catch (error) {
       toast.error(`Something went wrong. Try again...`);

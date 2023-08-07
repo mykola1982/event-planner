@@ -1,8 +1,12 @@
 import { useLocation } from "react-router-dom";
 
 import { MainContainer } from "components/MainContainer";
-import { Section } from "components/Section";
+import { SectionPageWithBackBtn } from "components/SectionPageWithBackBtn";
 import { BtnBack } from "components/BtnBack";
+
+import { FormAddEvent } from "components/FormAddEvent";
+
+import { Title } from "./AddEventPage.styled";
 
 const AddEventPage = () => {
   const location = useLocation();
@@ -10,10 +14,11 @@ const AddEventPage = () => {
   const backLinkHref = location.state?.from ?? "/";
   return (
     <MainContainer>
-      <Section>
+      <SectionPageWithBackBtn>
         <BtnBack to={backLinkHref} />
-        <p>створити подію</p>
-      </Section>
+        <Title>Create new event</Title>
+        <FormAddEvent />
+      </SectionPageWithBackBtn>
     </MainContainer>
   );
 };

@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
-
-import * as eventsAPI from "../../services/events-API";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { MainContainer } from "components/MainContainer";
 import { SectionPageWithBackBtn } from "components/SectionPageWithBackBtn";

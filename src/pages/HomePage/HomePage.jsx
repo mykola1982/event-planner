@@ -17,10 +17,8 @@ import { ButtonSection, Title } from "./HomePage.styled";
 
 const HomePage = () => {
   const isTableDevice = useMedia("(min-width: 768px) and (max-width: 1437px)");
-
   const [events, setEvents] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
 
