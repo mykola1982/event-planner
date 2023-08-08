@@ -62,7 +62,6 @@ export const DropdownItem = styled.li`
 
   color: #3f3f3f;
   padding: 16px 0px;
-  border-bottom: 1px solid #aca7c3;
 
   cursor: pointer;
 
