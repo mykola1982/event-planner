@@ -23,9 +23,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayuot />}>
             <Route index element={<HomePage />} />
-            <Route path="/add" element={<AddEventPage />} />
-            <Route path="/events/:eventId" element={<EventDetailsPage />} />
-            <Route path="/edit" element={<EditEventPage />} />
+            <Route path="add" element={<AddEventPage />} />
+            <Route path="events/:eventId" element={<EventDetailsPage />} />
+            <Route path="edit" element={<EditEventPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
