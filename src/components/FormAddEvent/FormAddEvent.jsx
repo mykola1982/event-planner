@@ -29,12 +29,12 @@ const validationSchema = yup.object().shape({
   name: yup
     .string()
     .required("This field is required")
-    .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+$/, "Invalid input"),
+    .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ\s]+$/, "Invalid input"),
   description: yup.string().required("This field is required"),
   locationEvent: yup
     .string()
     .required("This field is required")
-    .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+$/, "Invalid input"),
+    .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ\s]+$/, "Invalid input"),
   date: yup.date().required("This field is required"),
   time: yup.string().required("This field is required"),
   category: yup.string().required("This field is required"),
