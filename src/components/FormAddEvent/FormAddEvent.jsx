@@ -24,6 +24,8 @@ import {
   Input,
   StyledErrorMessage,
   Button,
+  DeleteButton,
+  DeleteIconStyled,
 } from "./FormAddEvent.styled";
 
 const idInputName = nanoid();
@@ -114,7 +116,7 @@ export const FormAddEvent = () => {
           <Wrapper>
             <InputWrapper>
               <Label htmlFor={idInputName}>Title</Label>
-              <Input id={idInputName} type="text" name="name" />
+              <Input id={idInputName} type="text" name="name"></Input>
               <StyledErrorMessage name="name" component="p" />
             </InputWrapper>
 
