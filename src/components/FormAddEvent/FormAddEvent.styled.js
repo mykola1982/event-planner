@@ -3,63 +3,127 @@ import styled from "styled-components";
 import { Form, Field, ErrorMessage } from "formik";
 
 export const StyledForm = styled(Form)`
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
+
+  border-radius: 8px;
+  padding: 40px 24px;
+
+  background: #ffffff;
+  box-shadow: 2px 4px 9px 0px #a68dae47;
+
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
+    width: 688px;
+  }
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[2]}) {
+    width: 1280px;
+    padding: 40px;
+  }
+`;
+
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
+
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[2]}) {
+    column-gap: 42px;
+  }
 `;
 
-// export const Label = styled.label`
-//   font-weight: 500;
-//   font-size: 22px;
-//   line-height: 1.16;
-// `;
+export const InputWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-// export const Input = styled(Field)`
-//   font-size: 18px;
-//   line-height: 1.16;
-//   width: 300px;
-//   height: 26px;
-//   border: 2px solid #212121;
-//   border-radius: 4px;
-//   outline: none;
-//   padding: 8px 16px;
-//   transition: border-color 250ms linear;
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
+    width: 308px;
+  }
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[2]}) {
+    width: 372px;
+  }
+`;
 
-//   :hover,
-//   :focus {
-//     border-color: orange;
-//   }
-// `;
+export const Label = styled.label`
+  width: 100%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  text-align: left;
+  color: ${(p) => p.theme.colors.primary};
+  margin-bottom: 8px;
+`;
 
-// export const StyledErrorMessage = styled(ErrorMessage)`
-//   font-size: 16px;
-//   font-weight: 700;
-//   line-height: 1.16;
-//   color: red;
-// `;
+export const Input = styled(Field)`
+  width: 100%;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 16px 12px;
+  border-radius: 8px;
+
+  border: 1px solid #aca7c3;
+
+  transition: ${(p) => p.theme.transitions.main};
+
+  &:hover,
+  &:focus {
+    border-color: ${(p) => p.theme.colors.primary};
+    outline: none;
+  }
+`;
+
+export const StyledErrorMessage = styled(ErrorMessage)`
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  color: #ff2b77;
+  margin-left: auto;
+  margin-top: 8px;
+`;
 
 export const Button = styled.button`
-  height: 40px;
-  width: 150px;
-  padding: 8px;
-  background-color: orange;
-  border-radius: 4px;
-  border: 2px solid #fff;
-  color: #fff;
-  font-weight: 700;
+  display: block;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 12px;
+  border-radius: 8px;
+  box-shadow: 2px 4px 9px 0px #a68dae47;
+  border: none;
+  background: ${(p) => p.theme.colors.primary};
+  transition: ${(p) => p.theme.transitions.main};
+
+  font-family: Poppins;
   font-size: 16px;
-  line-height: 1.16;
-  text-align: center;
-  letter-spacing: 0.03em;
-  transition: background-color 250ms linear, color 250ms linear,
-    box-shadow 250ms linear;
-  :hover,
-  :focus {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    color: orange;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+
+  color: #ffffff;
+  margin-top: 40px;
+  margin-left: auto;
+
+  &:hover,
+  &:focus {
+    background: ${(p) => p.theme.colors.hoverBtn};
+  }
+
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[1]}) {
+    width: 193px;
   }
 `;

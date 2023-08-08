@@ -6,11 +6,14 @@ export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
 `;
 export const LoaderWrap = styled.div`
   position: absolute;
   bottom: 50%;
-  left: 47%;
+  left: 50%;
+
+  transform: translate(-50%, 50%);
 
   display: flex;
   justify-content: center;

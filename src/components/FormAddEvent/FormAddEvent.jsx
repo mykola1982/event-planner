@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as yup from "yup";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
@@ -11,10 +11,20 @@ import * as eventsAPI from "../../services/events-API";
 import { combineDateTime } from "services/combineDateTime";
 
 import { categories } from "data/categories";
+import { priorities } from "data/priorities";
 
 import { Loader } from "components/Loader";
+import { CustomSelect } from "components/CustomSelect";
 
-import { StyledForm, Button } from "./FormAddEvent.styled";
+import {
+  StyledForm,
+  Label,
+  InputWrapper,
+  Wrapper,
+  Input,
+  StyledErrorMessage,
+  Button,
+} from "./FormAddEvent.styled";
 
 const idInputName = nanoid();
 const idInputDescription = nanoid();
@@ -37,8 +47,8 @@ const validationSchema = yup.object().shape({
     .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ\s]+$/, "Invalid input"),
   date: yup.date().required("This field is required"),
   time: yup.string().required("This field is required"),
-  category: yup.string().required("This field is required"),
-  priority: yup.string().required("This field is required"),
+  category: yup.string(),
+  priority: yup.string(),
 });
 
 const initialValues = {
@@ -49,15 +59,25 @@ const initialValues = {
   date: new Date().toISOString().split("T")[0],
   time: new Date().toISOString().split("T")[1].slice(0, 5),
   category: categories[0],
-  priority: "Medium",
+  priority: priorities[0],
 };
 
 export const FormAddEvent = () => {
   const navigate = useNavigate();
 
+  const [selectedCategory, setSelectedCategory] = useState(
+    initialValues.category
+  );
+  const [selectedPriority, setSelectedPriority] = useState(
+    initialValues.priority
+  );
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (values, { resetForm }) => {
+    values.category = selectedCategory;
+    values.priority = selectedPriority;
+
     const newEvent = {
       name: values.name,
       description: values.description,
@@ -91,46 +111,66 @@ export const FormAddEvent = () => {
         onSubmit={handleSubmit}
       >
         <StyledForm>
-          <label htmlFor={idInputName}>Title</label>
-          <Field id={idInputName} type="text" name="name" />
-          <ErrorMessage name="name" component="p" />
-          <label htmlFor={idInputDescription}>Description</label>
-          <Field
-            component="textarea"
-            id={idInputDescription}
-            rows="10"
-            name="description"
-          />
-          <ErrorMessage name="description" component="p" />
-          <label htmlFor={idInputDate}>Select date</label>
-          <Field id={idInputDate} type="date" name="date" />
-          <ErrorMessage name="date" component="p" />
-          <label htmlFor={idInputTime}>Select time</label>
-          <Field id={idInputTime} type="time" name="time" />
-          <ErrorMessage name="time" component="p" />
-          <label htmlFor={idInputLocationEvent}>Location</label>
-          <Field id={idInputLocationEvent} type="text" name="locationEvent" />
-          <ErrorMessage name="locationEvent" component="p" />
-          <label htmlFor={idInputCategory}>Category</label>
-          <Field component="select" name="category" id={idInputCategory}>
-            {categories.map((category) => (
-              <option key={nanoid()} value={category}>
-                {category}
-              </option>
-            ))}
-          </Field>
-          <ErrorMessage name="category" component="p" />
-          <label htmlFor={idInputImg}>Add picture</label>
-          <Field id={idInputImg} type="file" name="img" />
-          <ErrorMessage name="img" component="p" />
-          <label htmlFor={idInputPriority}>Priority</label>
+          <Wrapper>
+            <InputWrapper>
+              <Label htmlFor={idInputName}>Title</Label>
+              <Input id={idInputName} type="text" name="name" />
+              <StyledErrorMessage name="name" component="p" />
+            </InputWrapper>
 
-          <Field component="select" name="priority" id={idInputPriority}>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </Field>
-          <ErrorMessage name="priority" component="p" />
+            <InputWrapper>
+              <Label htmlFor={idInputDescription}>Description</Label>
+              <Input id={idInputDescription} rows="10" name="description" />
+              <StyledErrorMessage name="description" component="p" />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputDate}>Select date</Label>
+              <Input id={idInputDate} type="date" name="date" />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputTime}>Select time</Label>
+              <Input id={idInputTime} type="time" name="time" />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputLocationEvent}>Location</Label>
+              <Input
+                id={idInputLocationEvent}
+                type="text"
+                name="locationEvent"
+              />
+              <StyledErrorMessage name="locationEvent" component="p" />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputCategory}>Category</Label>
+              <CustomSelect
+                id={idInputCategory}
+                title={"Select Category"}
+                data={categories}
+                selected={selectedCategory}
+                setSelected={setSelectedCategory}
+              />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputImg}>Add picture</Label>
+              <Input id={idInputImg} type="file" name="img" disabled />
+            </InputWrapper>
+
+            <InputWrapper>
+              <Label htmlFor={idInputPriority}>Priority</Label>
+              <CustomSelect
+                id={idInputPriority}
+                title={"Select Priority"}
+                data={priorities}
+                selected={selectedPriority}
+                setSelected={setSelectedPriority}
+              />
+            </InputWrapper>
+          </Wrapper>
 
           <Button type="submit">Add event</Button>
         </StyledForm>
